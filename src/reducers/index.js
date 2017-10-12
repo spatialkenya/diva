@@ -45,24 +45,25 @@ const schoolsByStatus = (state = {}, action) => {
     }
 }
 
-const userInitialState = {
-    data: null,
+const userinitialState = {
+    token: null,
+    profile:null,
     isLoading: false
-}
-
-const user = (state = userInitialState, action) => {
+  }
+  
+  export  function currentUser(state = userinitialState,action) {
     switch (action.type) {
-        case USER_LOGGING_IN:
-            return { ...userInitialState, isLoading: true }
-        case USER_LOGGED_IN:
-            return { data: action.payload, isLoading: false }
-        case USER_LOGGED_OUT:
-            return userInitialState
-        default:
-            return state
+      case USER_LOGGING_IN:
+        return { ...userinitialState, isLoading: true }
+      case USER_LOGGED_IN:
+        return { token: action.token,profile:action.profile, isLoading: false }
+      case USER_LOGGED_OUT:
+        return userinitialState
+      default:
+        return state
     }
-}
+  }
 
-const rootReducer = combineReducers({ schoolsByStatus, selectedStatus, user })
+const rootReducer = combineReducers({ schoolsByStatus, selectedStatus, currentUser })
 
 export default rootReducer

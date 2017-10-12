@@ -11,7 +11,12 @@ import LoginComponent from './Login'
 import Home from './Home'
 import MappComponent from '../containers/Mapp'
 
-
+const getUserName = user => {
+  if (user.profile) {
+    return `Welcome ${user.profile.username}`
+  }
+  return `Not logged in`
+}
 
 // Need to apply the hocs here to avoid applying them inside the render method
 const Login = userIsNotAuthenticatedRedir(LoginComponent)
@@ -20,10 +25,11 @@ const Mapp = userIsAuthenticatedRedir(MappComponent)
 
 // Only show login when the user is not logged in and logout when logged in
 // Could have also done this with a single wrapper and `FailureComponent`
+const UserName = ({ user }) => (<div className="username">{getUserName(user)}</div>)
 const LoginLink = userIsNotAuthenticated(() => <NavLink activeClassName="active" to="/login">Login</NavLink>)
 const LogoutLink = userIsAuthenticated(({ logout }) => <a href="#" onClick={() => logout()}>Logout</a>)
 
-function App({ token,logout }) {
+function App({ user,logout }) {
   return (
     <Router>
       <div className="wrapper">
@@ -35,6 +41,7 @@ function App({ token,logout }) {
         <nav className="authNavigation">
           <LoginLink />
           <LogoutLink logout={logout} />
+          <UserName user={user} />
         </nav>
         <div className="content">
           <Route exact path="/" component={Home}/>
@@ -48,7 +55,7 @@ function App({ token,logout }) {
 }
 
 const mapStateToProps = state => ({
-  token: state.token
+  user: state.currentUser
 })
 
 

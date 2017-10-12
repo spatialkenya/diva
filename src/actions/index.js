@@ -1,3 +1,5 @@
+import { URL, LOGIN } from '../config/Api'
+import axios from 'axios'
 export const REQUEST_SCHOOLS = 'REQUEST_SCHOOLS'
 export const RECEIVE_SCHOOLS = 'RECEIVE_SCHOOLS'
 export const SELECT_STATUS = 'SELECT_STATUS'
@@ -5,9 +7,6 @@ export const SELECT_STATUS = 'SELECT_STATUS'
 export const USER_LOGGING_IN = 'USER_LOGGING_IN'
 export const USER_LOGGED_IN = 'USER_LOGGED_IN'
 export const USER_LOGGED_OUT = 'USER_LOGGED_OUT'
-export const SET_TOKEN = "SET_TOKEN";
-
-
 
 export const selectStatus = status => ({ type: SELECT_STATUS, status })
 
@@ -15,7 +14,30 @@ export const requestSchools = status => ({ type: REQUEST_SCHOOLS, status })
 
 export const receiveSchools = (status, json) => ({ type: RECEIVE_SCHOOLS, status, schools: json })
 
-export const setToken = data => ({ type: SET_TOKEN, data })
+
+export const login = (username, password) => dispatch => {
+    dispatch({
+        type: USER_LOGGING_IN
+    })
+    return axios
+        .post(URL + LOGIN, {
+            username,
+            password
+        })
+        .then(function (response) {
+            dispatch({
+                type: USER_LOGGED_IN,
+                token:response.data.token,
+                profile:response.data.profile
+            });
+        })
+        .catch(function (error) {
+            console.log(error.response.data)
+            alert("Failed to fetch:" + error)
+            dispatch({ type: USER_LOGGED_OUT })
+        });
+}
+
 
 const fetchSchools = status => dispatch => {
     dispatch(requestSchools(status))
@@ -51,8 +73,6 @@ export const fetchSchoolsIfNeeded = status => (dispatch, getState) => {
 }
 
 
-export function logout() {
-    return {
-      type:USER_LOGGED_OUT
-    }
-  }
+export const logout = () => dispatch => {
+    dispatch({ type: USER_LOGGED_OUT })
+}

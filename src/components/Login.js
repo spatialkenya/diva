@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { login } from '../Auth';
+import { login } from '../actions';
 
 class LoginContainer extends Component {
 
@@ -19,7 +19,6 @@ class LoginContainer extends Component {
             <label>Username:</label>
             <input type="text" name="username" onChange={e => this.setState({username: e.target.value})} value={username}/>
           </div>
-
           <div className="form-group">
             <label>Password:</label>
             <input type="password" name="password" onChange={e => this.setState({password: e.target.value})} value={password}/>
@@ -42,10 +41,4 @@ class LoginContainer extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    login:login
-  };
-}
-
-export default connect( mapStateToProps)(LoginContainer);
+export default connect(null, { login })(LoginContainer)
