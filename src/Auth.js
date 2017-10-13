@@ -1,3 +1,5 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
 import locationHelperBuilder from 'redux-auth-wrapper/history4/locationHelper'
 import { connectedRouterRedirect } from 'redux-auth-wrapper/history4/redirect'
 import connectedAuthWrapper from 'redux-auth-wrapper/connectedAuthWrapper'
@@ -31,7 +33,13 @@ export const userIsNotAuthenticated = connectedAuthWrapper(userIsNotAuthenticate
 export const userIsNotAuthenticatedRedir = connectedRouterRedirect({
     ...userIsNotAuthenticatedDefaults,
     authenticatingSelector: state => state.currentUser.isLoading,
-    AuthenticatingComponent: Loading,    
+    AuthenticatingComponent: Loading,
     redirectPath: (state, ownProps) => locationHelper.getRedirectQueryParam(ownProps) || '/',
     allowRedirectBack: false
+})
+
+export const VisibleOnlyLoggedIn = connectedAuthWrapper({
+    authenticatedSelector: state => state.currentUser.token !== null,
+    FailureComponent: () => <div><h5>Please login to view this content</h5> <Link to='/login'>Login</Link></div>,
+    wrapperDisplayName: 'VisibleOnlyLoggedIn',
 })

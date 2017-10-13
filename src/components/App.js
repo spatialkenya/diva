@@ -10,6 +10,7 @@ import ProtectedComponent from './Protected'
 import LoginComponent from './Login'
 import Home from './Home'
 import MappComponent from '../containers/Mapp'
+import Detail from './Detail'
 
 const getUserName = user => {
   if (user.profile) {
@@ -36,7 +37,7 @@ function App({ user,logout }) {
         <nav className="navigation">
           <NavLink activeClassName="active" exact to="/">Home</NavLink>
           <NavLink activeClassName="active" exact to="/protected">Protected</NavLink>
-          <NavLink activeClassName="active" exact to="/schools">Schools</NavLink>
+          <NavLink activeClassName="active" exact to="/schools/207079">Schools</NavLink>
         </nav>
         <nav className="authNavigation">
           <LoginLink />
@@ -47,7 +48,8 @@ function App({ user,logout }) {
           <Route exact path="/" component={Home}/>
           <Route path="/login" component={Login}/>
           <Route path="/protected" component={Protected}/>
-          <Route path="/schools" component={Mapp}/>
+          <Route path="/explorer" component={Mapp}/>
+          <Route path="/schools/:schoolId" component={Detail}/>
         </div>
     </div>
     </Router>
