@@ -1,4 +1,14 @@
-.fullscreen {
+body {
+  margin: 0;
+  font-family: Tahoma, Verdana, Segoe, sans-serif;
+}
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.content {
   position: absolute;
   top: 0;
   right: 0;
@@ -8,3 +18,13 @@
   margin-top: 50px;
   outline: hidden;
 }
+/* .content {
+  flex: 1 0 100%;
+  margin-top:50px;
+} */
+
+.content h2 {
+  font-family: Arial Black, Arial Bold, Gadget, sans-serif;
+  margin-top: 0;
+}
+

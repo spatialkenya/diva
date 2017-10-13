@@ -10,9 +10,9 @@ export const mapLayers = {
                 property: 'present_de',
                 stops: [
                     [
-                        0, '#f1f075'
+                        0, '#e55e5e'
                     ],
-                    [1, '#e55e5e']
+                    [1, '#11b4da']
                 ]
             },
             "circle-radius": 5,

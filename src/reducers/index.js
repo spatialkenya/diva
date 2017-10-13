@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import { SELECT_STATUS, REQUEST_SCHOOLS, RECEIVE_SCHOOLS, USER_LOGGED_IN, USER_LOGGING_IN, USER_LOGGED_OUT } from '../actions'
+import { SELECT_STATUS, REQUEST_SCHOOLS, RECEIVE_SCHOOLS, USER_LOGGED_IN,USER_LOGIN_ERROR, USER_LOGGING_IN, USER_LOGGED_OUT } from '../actions'
 
 const selectedStatus = (state = 'All', action) => {
     switch (action.type) {
@@ -48,15 +48,18 @@ const schoolsByStatus = (state = {}, action) => {
 const userinitialState = {
     token: null,
     profile:null,
-    isLoading: false
+    isLoading: false,
+    error:null
   }
   
   export  function currentUser(state = userinitialState,action) {
     switch (action.type) {
       case USER_LOGGING_IN:
         return { ...userinitialState, isLoading: true }
+    case USER_LOGIN_ERROR:
+        return {...userinitialState,error:action.error}
       case USER_LOGGED_IN:
-        return { token: action.token,profile:action.profile, isLoading: false }
+        return { token: action.token,profile:action.profile, isLoading: false,error:null }
       case USER_LOGGED_OUT:
         return userinitialState
       default:

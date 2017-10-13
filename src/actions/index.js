@@ -5,6 +5,7 @@ export const RECEIVE_SCHOOLS = 'RECEIVE_SCHOOLS'
 export const SELECT_STATUS = 'SELECT_STATUS'
 
 export const USER_LOGGING_IN = 'USER_LOGGING_IN'
+export const USER_LOGIN_ERROR = 'USER_LOGIN_ERROR'
 export const USER_LOGGED_IN = 'USER_LOGGED_IN'
 export const USER_LOGGED_OUT = 'USER_LOGGED_OUT'
 
@@ -32,9 +33,11 @@ export const login = (username, password) => dispatch => {
             });
         })
         .catch(function (error) {
-            console.log(error.response.data)
-            alert("Failed to fetch:" + error)
-            dispatch({ type: USER_LOGGED_OUT })
+            if(error.response=== undefined){
+                dispatch({ type: USER_LOGIN_ERROR,error:error })
+            }else{
+                dispatch({ type: USER_LOGIN_ERROR,error:error.response.data })
+            }
         });
 }
 
