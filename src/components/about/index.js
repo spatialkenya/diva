@@ -1,4 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types'
+import {connect} from 'react-redux'
+import {setNavSubtitle} from '../../actions'
 import {Card, CardHeader, CardText} from 'material-ui/Card';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Footer from '../footer'
@@ -100,7 +103,15 @@ const AboutFunctionalities = () => (
 );
 
 
-export default class About extends React.Component {
+ class About extends React.Component {
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired
+  }
+  componentDidMount() {
+    const {dispatch} = this.props
+    dispatch(setNavSubtitle("About"))
+  }
+
   render() {
     return (
       <div>
@@ -128,3 +139,5 @@ export default class About extends React.Component {
     );
   }
 }
+
+export default connect(null)(About)

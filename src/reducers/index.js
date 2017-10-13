@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import { SELECT_STATUS, REQUEST_SCHOOLS, RECEIVE_SCHOOLS, USER_LOGGED_IN,USER_LOGIN_ERROR, USER_LOGGING_IN, USER_LOGGED_OUT } from '../actions'
+import { SELECT_STATUS, REQUEST_SCHOOLS, RECEIVE_SCHOOLS, SET_NAV_SUBTITLE, USER_LOGGED_IN, USER_LOGIN_ERROR, USER_LOGGING_IN, USER_LOGGED_OUT } from '../actions'
 
 const selectedStatus = (state = 'All', action) => {
     switch (action.type) {
@@ -47,26 +47,35 @@ const schoolsByStatus = (state = {}, action) => {
 
 const userinitialState = {
     token: null,
-    profile:null,
+    profile: null,
     isLoading: false,
-    error:null
-  }
-  
-  export  function currentUser(state = userinitialState,action) {
-    switch (action.type) {
-      case USER_LOGGING_IN:
-        return { ...userinitialState, isLoading: true }
-    case USER_LOGIN_ERROR:
-        return {...userinitialState,error:action.error}
-      case USER_LOGGED_IN:
-        return { token: action.token,profile:action.profile, isLoading: false,error:null }
-      case USER_LOGGED_OUT:
-        return userinitialState
-      default:
-        return state
-    }
-  }
+    error: null
+}
 
-const rootReducer = combineReducers({ schoolsByStatus, selectedStatus, currentUser })
+export function currentUser(state = userinitialState, action) {
+    switch (action.type) {
+        case USER_LOGGING_IN:
+            return { ...userinitialState, isLoading: true }
+        case USER_LOGIN_ERROR:
+            return { ...userinitialState, error: action.error }
+        case USER_LOGGED_IN:
+            return { token: action.token, profile: action.profile, isLoading: false, error: null }
+        case USER_LOGGED_OUT:
+            return userinitialState
+        default:
+            return state
+    }
+}
+
+export const subTitle = (state ="", action) => {
+    switch (action.type) {
+        case SET_NAV_SUBTITLE:
+            return action.subtitle
+        default:
+            return state
+    }
+}
+
+const rootReducer = combineReducers({ schoolsByStatus, selectedStatus, currentUser,subTitle })
 
 export default rootReducer

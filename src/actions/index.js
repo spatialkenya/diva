@@ -8,8 +8,10 @@ export const USER_LOGGING_IN = 'USER_LOGGING_IN'
 export const USER_LOGIN_ERROR = 'USER_LOGIN_ERROR'
 export const USER_LOGGED_IN = 'USER_LOGGED_IN'
 export const USER_LOGGED_OUT = 'USER_LOGGED_OUT'
+export const SET_NAV_SUBTITLE = 'SET_NAV_SUBTITLE'
 
 export const selectStatus = status => ({ type: SELECT_STATUS, status })
+export const setNavSubtitle = subtitle => ({ type: SET_NAV_SUBTITLE, subtitle })
 
 export const requestSchools = status => ({ type: REQUEST_SCHOOLS, status })
 

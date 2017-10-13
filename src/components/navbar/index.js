@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, NavLink } from 'react-router-dom';
 import './Navbar.css';
-import { userIsAuthenticated, userIsNotAuthenticated } from '../../Auth'
+import { userIsAuthenticated, userIsNotAuthenticated } from '../../util/Auth'
 
 const UserName = ({ user }) => (<li><a className="nav-item">{user}</a></li>)
 const LoginLink = userIsNotAuthenticated(() => <li><NavLink activeClassName="active" to="/login">Login</NavLink></li>)
@@ -23,7 +23,7 @@ export default class Navbar extends React.Component {
           <Link to={`${process.env.PUBLIC_URL}/`} className="navbar-brand"></Link>
           <div className="navbar-title">DiVA
             <span className="title subhead">
-              {"  " + this.props.subhead}
+              {"  " + this.props.subtitle}
             </span>
           </div>
         </div>
@@ -46,7 +46,7 @@ export default class Navbar extends React.Component {
 }
 
 Navbar.propTypes = {
-  subhead: PropTypes.string,
+  subtitle: PropTypes.string,
   user:PropTypes.string,
   logout:PropTypes.func
 };

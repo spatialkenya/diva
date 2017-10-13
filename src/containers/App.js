@@ -5,7 +5,7 @@ import './App.css'
 import { logout } from '../actions'
 import {
   userIsAuthenticatedRedir, userIsNotAuthenticatedRedir,
-} from '../Auth'
+} from '../util/Auth'
 
 import Navbar from '../components/navbar'
 import Home from '../components/home'
@@ -13,6 +13,8 @@ import NotFound from '../components/notfound'
 import About from '../components/about'
 import LoginContainer from '../components/login'
 import MappComponent from './Mapp'
+import SchoolDetailPage from '../components/detail/school'
+import CountyDetailPage from '../components/detail/county'
 
 
 const getUserName = user => {
@@ -23,20 +25,24 @@ const getUserName = user => {
 }
 
 const Login = userIsNotAuthenticatedRedir(LoginContainer)
-const Mapp = userIsAuthenticatedRedir(MappComponent)
+// const Mapp = userIsAuthenticatedRedir(MappComponent)
+const SchoolDetail = userIsAuthenticatedRedir(SchoolDetailPage)
+const CountyDetail = userIsAuthenticatedRedir(CountyDetailPage)
 
 
-function App({ user, logout }) {
+function App({ user, subtitle, logout }) {
   return (
     <Router>
       <div className="wrapper">
-        <Navbar subhead={"Schools Map"} user={getUserName(user)} logout={logout} />
+        <Navbar subtitle={subtitle} user={getUserName(user)} logout={logout} />
         <div className="content">
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/login" component={Login} />
-            <Route path="/map" component={Mapp} />
+            <Route path="/map" component={MappComponent} />
             <Route path="/about" component={About} />
+            <Route path="/schools/:schoolId" component={SchoolDetail} />
+            <Route path="/county/:countyId" component={CountyDetail} />
             <Route component={NotFound} />
           </Switch>
         </div>
@@ -46,7 +52,8 @@ function App({ user, logout }) {
 }
 
 const mapStateToProps = state => ({
-  user: state.currentUser
+  user: state.currentUser,
+  subtitle: state.subTitle
 })
 
 

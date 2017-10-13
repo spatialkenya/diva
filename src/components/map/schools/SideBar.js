@@ -17,7 +17,7 @@ const SideBar = ({value, onChange}) => {
                         }}>
                             <h4>School Layers</h4>
                             <h5>{value}</h5>
-                            <h5> Filter by Device Status</h5>
+                            <h5> Filter displayed schools by Device Status</h5>
                             <Select
                                 name="form-field-name"
                                 options={[
@@ -35,7 +35,7 @@ const SideBar = ({value, onChange}) => {
                                 onChange={onChange}
                                 simpleValue
                                 clearable={false}
-                                placeholder="Filter by device status"
+                                placeholder="Filter schools by device status"
                                 value={value}/>
                         </div>
                     </div>
