@@ -19,7 +19,7 @@ export const userIsAuthenticated = connectedAuthWrapper(userIsAuthenticatedDefau
 export const userIsAuthenticatedRedir = connectedRouterRedirect({
     ...userIsAuthenticatedDefaults,
     AuthenticatingComponent: Loading,
-    redirectPath: '/login'
+    redirectPath: `${process.env.PUBLIC_URL}/login`
 })
 
 const userIsNotAuthenticatedDefaults = {
@@ -40,6 +40,6 @@ export const userIsNotAuthenticatedRedir = connectedRouterRedirect({
 
 export const VisibleOnlyLoggedIn = connectedAuthWrapper({
     authenticatedSelector: state => state.currentUser.token !== null,
-    FailureComponent: () => <div><h5>Please login to view this content</h5> <Link to='/login'>Login</Link></div>,
+    FailureComponent: () => <div><h5>Please login to view this content</h5> <Link to={`${process.env.PUBLIC_URL}/login`}>Login</Link></div>,
     wrapperDisplayName: 'VisibleOnlyLoggedIn',
 })
