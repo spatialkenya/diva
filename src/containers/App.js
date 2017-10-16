@@ -37,12 +37,12 @@ function App({ user, subtitle, logout }) {
         <Navbar subtitle={subtitle} user={getUserName(user)} logout={logout} />
         <div className="content">
           <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/login" component={Login} />
-            <Route path="/map" component={MappComponent} />
-            <Route path="/about" component={About} />
-            <Route path="/schools/:schoolId" component={SchoolDetail} />
-            <Route path="/county/:countyId" component={CountyDetail} />
+            <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home} />
+            <Route path={`${process.env.PUBLIC_URL}/login`} component={Login} />
+            <Route path={`${process.env.PUBLIC_URL}/map`} component={MappComponent} />
+            <Route path={`${process.env.PUBLIC_URL}/about`} component={About} />
+            <Route path={`${process.env.PUBLIC_URL}/schools/:schoolId`} component={SchoolDetail} />
+            <Route path={`${process.env.PUBLIC_URL}/county/:countyId`} component={CountyDetail} />
             <Route component={NotFound} />
           </Switch>
         </div>
