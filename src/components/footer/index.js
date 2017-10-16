@@ -11,21 +11,21 @@ const Footer = () => (
                 <h4 className="">DiVA</h4>
               </dt>
               <dd>
-                <a href="/digischool-ui">Home</a>
+                <a href={`${process.env.PUBLIC_URL}/`}>Home</a>
               </dd>
               <dd>
-                <a href="/digischool-ui/about">
+                <a href={`${process.env.PUBLIC_URL}/about`}>
                   About</a>
               </dd>
               <dd>
-                <a href="/schools/explorer">Map</a>
+                <a href={`${process.env.PUBLIC_URL}/map`}>Map</a>
               </dd>
             </dl>
           </div>
         </div>
         <div className="row">
           <div className="col-md-6 col-sm-6 col-xs-12 footer-logo">
-            <a href="/digischool-ui" className="logo-wrapper">
+            <a href={`${process.env.PUBLIC_URL}/`} className="logo-wrapper">
   
               <img className="logo" src="https://s3-eu-west-1.amazonaws.com/myspatialdata/digischool-logo2.png" alt="DiVA"/>
   

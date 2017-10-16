@@ -5,7 +5,7 @@ import './Navbar.css';
 import { userIsAuthenticated, userIsNotAuthenticated } from '../../util/Auth'
 
 const UserName = ({ user }) => (<li><a className="nav-item">{user}</a></li>)
-const LoginLink = userIsNotAuthenticated(() => <li><NavLink activeClassName="active" to="/login">Login</NavLink></li>)
+const LoginLink = userIsNotAuthenticated(() => <li><NavLink activeClassName="active" to={`${process.env.PUBLIC_URL}/login`}>Login</NavLink></li>)
 const LogoutLink = userIsAuthenticated(({ logout }) => <li><a href="#" onClick={() => logout()}>Logout</a></li>)
 
 export default class Navbar extends React.Component {
