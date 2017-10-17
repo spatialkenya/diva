@@ -34,7 +34,7 @@ export const userIsNotAuthenticatedRedir = connectedRouterRedirect({
     ...userIsNotAuthenticatedDefaults,
     authenticatingSelector: state => state.currentUser.isLoading,
     AuthenticatingComponent: Loading,
-    redirectPath: (state, ownProps) => locationHelper.getRedirectQueryParam(ownProps) || '/',
+    redirectPath: (state, ownProps) => locationHelper.getRedirectQueryParam(ownProps) || `${process.env.PUBLIC_URL}/`,
     allowRedirectBack: false
 })
 
