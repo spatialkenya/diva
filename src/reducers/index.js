@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux'
-
-import { SELECT_STATUS, REQUEST_SCHOOLS, RECEIVE_SCHOOLS, SET_NAV_SUBTITLE, USER_LOGGED_IN, USER_LOGIN_ERROR, USER_LOGGING_IN, USER_LOGGED_OUT } from '../actions'
-
+import constants from '../constants'
 const selectedStatus = (state = 'All', action) => {
     switch (action.type) {
-        case SELECT_STATUS:
+        case constants.SELECT_STATUS:
             return action.status
         default:
             return state
@@ -16,12 +14,12 @@ const schools = (state = {
     items: {}
 }, action) => {
     switch (action.type) {
-        case REQUEST_SCHOOLS:
+        case constants.REQUEST_SCHOOLS:
             return {
                 ...state,
                 isFetching: true
             }
-        case RECEIVE_SCHOOLS:
+        case constants.RECEIVE_SCHOOLS:
             return {
                 ...state,
                 isFetching: false,
@@ -34,8 +32,8 @@ const schools = (state = {
 
 const schoolsByStatus = (state = {}, action) => {
     switch (action.type) {
-        case RECEIVE_SCHOOLS:
-        case REQUEST_SCHOOLS:
+        case constants.RECEIVE_SCHOOLS:
+        case constants.REQUEST_SCHOOLS:
             return {
                 ...state,
                 [action.status]: schools(state[action.status], action)
@@ -46,7 +44,6 @@ const schoolsByStatus = (state = {}, action) => {
 }
 
 const userinitialState = {
-    token: null,
     profile: null,
     isLoading: false,
     error: null
@@ -54,13 +51,13 @@ const userinitialState = {
 
 export function currentUser(state = userinitialState, action) {
     switch (action.type) {
-        case USER_LOGGING_IN:
+        case constants.USER_LOGGING_IN:
             return { ...userinitialState, isLoading: true }
-        case USER_LOGIN_ERROR:
+        case constants.USER_LOGIN_ERROR:
             return { ...userinitialState, error: action.error }
-        case USER_LOGGED_IN:
-            return { token: action.token, profile: action.profile, isLoading: false, error: null }
-        case USER_LOGGED_OUT:
+        case constants.USER_LOGGED_IN:
+            return {profile: action.profile, isLoading: false, error: null }
+        case constants.USER_LOGGED_OUT:
             return userinitialState
         default:
             return state
@@ -69,7 +66,7 @@ export function currentUser(state = userinitialState, action) {
 
 export const subTitle = (state ="", action) => {
     switch (action.type) {
-        case SET_NAV_SUBTITLE:
+        case constants.SET_NAV_SUBTITLE:
             return action.subtitle
         default:
             return state

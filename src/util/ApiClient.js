@@ -3,7 +3,7 @@ import store from '../store';
 import { URL } from '../config/Api';
 
 export const apiClient = function() {
-        const token = store.getState().currentUser.token;
+        const token =localStorage.getItem('token')
         const params = {
             baseURL: URL,
             headers: {'Authorization': 'Token ' + token}

@@ -9,7 +9,7 @@ import Loading from '../components/Loading'
 const locationHelper = locationHelperBuilder({})
 
 const userIsAuthenticatedDefaults = {
-    authenticatedSelector: state => state.currentUser.token !== null,
+    authenticatedSelector: state => localStorage.getItem('user') !== null,
     authenticatingSelector: state => state.currentUser.isLoading,
     wrapperDisplayName: 'UserIsAuthenticated'
 }
@@ -24,7 +24,7 @@ export const userIsAuthenticatedRedir = connectedRouterRedirect({
 
 const userIsNotAuthenticatedDefaults = {
     // Want to redirect the user when they are done loading and authenticated
-    authenticatedSelector: state => state.currentUser.token === null && state.currentUser.isLoading === false,
+    authenticatedSelector: state => localStorage.getItem('user') === null && state.currentUser.isLoading === false,
     wrapperDisplayName: 'UserIsNotAuthenticated'
 }
 
@@ -39,7 +39,7 @@ export const userIsNotAuthenticatedRedir = connectedRouterRedirect({
 })
 
 export const VisibleOnlyLoggedIn = connectedAuthWrapper({
-    authenticatedSelector: state => state.currentUser.token !== null,
+    authenticatedSelector: state => localStorage.getItem('user') !== null,
     FailureComponent: () => <div><h5>Please login to view this content</h5> <Link to={`${process.env.PUBLIC_URL}/login`}>Login</Link></div>,
     wrapperDisplayName: 'VisibleOnlyLoggedIn',
 })

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { Jane, JaneLayer, MapLayer, Source } from 'jane-maps';
+import { Jane, JaneLayer, MapLayer, Source, Legend } from 'jane-maps';
 import { mapboxGLOptions } from '../../../config/Map';
 import bbox from 'geojson-bbox';
 import 'jane-maps/dist/styles.css';
@@ -50,9 +50,9 @@ const CountyMap = ({ county }) => {
                                     property: 'present_devices',
                                     stops: [
                                         [
-                                            0, '#f1f075'
+                                            0, '#ff6a00'
                                         ],
-                                        [1, '#e55e5e']
+                                        [1, '#11b4da']
                                     ]
                                 },
                                 "circle-radius": 5,
@@ -60,6 +60,15 @@ const CountyMap = ({ county }) => {
                                 "circle-stroke-color": "#fff"
                             }} />
                         </JaneLayer>
+                        <Legend>
+                            <div className="legendSection">
+                                <div>
+                                    <p>Legend</p>
+                                    <p><i style={{ background: '#00bcd4', padding: '1px 8px', borderRadius: '50%' }}></i>-- Schools with Devices</p>
+                                    <p><i style={{ background: '#ff6a00', padding: '1px 8px', borderRadius: '50%' }}></i>-- Schools yet to Receive</p>
+                                </div>
+                            </div>
+                        </Legend>
                     </Jane>
                 </div>
             </div>

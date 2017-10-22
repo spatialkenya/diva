@@ -3,14 +3,14 @@ export const appConfig = {
 };
 
 export const mapLayers = {
-    schools_received: {
+    schools: {
         type: 'circle',
         paint: {
             "circle-color": {
-                property: 'present_de',
+                property: 'present_devices',
                 stops: [
                     [
-                        0, '#e55e5e'
+                        0, '#ff6a00'
                     ],
                     [1, '#11b4da']
                 ]

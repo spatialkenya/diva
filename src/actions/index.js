@@ -1,26 +1,17 @@
 import { URL, LOGIN } from '../config/Api'
+import constants from '../constants'
 import axios from 'axios'
-export const REQUEST_SCHOOLS = 'REQUEST_SCHOOLS'
-export const RECEIVE_SCHOOLS = 'RECEIVE_SCHOOLS'
-export const SELECT_STATUS = 'SELECT_STATUS'
+export const selectStatus = status => ({ type: constants.SELECT_STATUS, status })
+export const setNavSubtitle = subtitle => ({ type: constants.SET_NAV_SUBTITLE, subtitle })
 
-export const USER_LOGGING_IN = 'USER_LOGGING_IN'
-export const USER_LOGIN_ERROR = 'USER_LOGIN_ERROR'
-export const USER_LOGGED_IN = 'USER_LOGGED_IN'
-export const USER_LOGGED_OUT = 'USER_LOGGED_OUT'
-export const SET_NAV_SUBTITLE = 'SET_NAV_SUBTITLE'
+export const requestSchools = status => ({ type: constants.REQUEST_SCHOOLS, status })
 
-export const selectStatus = status => ({ type: SELECT_STATUS, status })
-export const setNavSubtitle = subtitle => ({ type: SET_NAV_SUBTITLE, subtitle })
-
-export const requestSchools = status => ({ type: REQUEST_SCHOOLS, status })
-
-export const receiveSchools = (status, json) => ({ type: RECEIVE_SCHOOLS, status, schools: json })
+export const receiveSchools = (status, json) => ({ type: constants.RECEIVE_SCHOOLS, status, schools: json })
 
 
 export const login = (username, password) => dispatch => {
     dispatch({
-        type: USER_LOGGING_IN
+        type: constants.USER_LOGGING_IN
     })
     return axios
         .post(URL + LOGIN, {
@@ -28,17 +19,17 @@ export const login = (username, password) => dispatch => {
             password
         })
         .then(function (response) {
+            localStorage.setItem('user', JSON.stringify(response.data))
             dispatch({
-                type: USER_LOGGED_IN,
-                token:response.data.token,
-                profile:response.data.profile
+                type: constants.USER_LOGGED_IN,
+                profile: response.data.profile
             });
         })
         .catch(function (error) {
-            if(error.response=== undefined){
-                dispatch({ type: USER_LOGIN_ERROR,error:error })
-            }else{
-                dispatch({ type: USER_LOGIN_ERROR,error:error.response.data })
+            if (error.response === undefined) {
+                dispatch({ type: constants.USER_LOGIN_ERROR, error: error })
+            } else {
+                dispatch({ type: constants.USER_LOGIN_ERROR, error: error.response.data })
             }
         });
 }
@@ -79,5 +70,6 @@ export const fetchSchoolsIfNeeded = status => (dispatch, getState) => {
 
 
 export const logout = () => dispatch => {
-    dispatch({ type: USER_LOGGED_OUT })
+    dispatch({ type: constants.USER_LOGGED_OUT })
+    localStorage.removeItem('user')
 }
