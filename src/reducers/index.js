@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+import { loadingBarReducer } from 'react-redux-loading-bar'
 import constants from '../constants'
 const selectedStatus = (state = 'All', action) => {
     switch (action.type) {
@@ -56,7 +57,7 @@ export function currentUser(state = userinitialState, action) {
         case constants.USER_LOGIN_ERROR:
             return { ...userinitialState, error: action.error }
         case constants.USER_LOGGED_IN:
-            return {profile: action.profile, isLoading: false, error: null }
+            return { profile: action.profile, isLoading: false, error: null }
         case constants.USER_LOGGED_OUT:
             return userinitialState
         default:
@@ -64,7 +65,7 @@ export function currentUser(state = userinitialState, action) {
     }
 }
 
-export const subTitle = (state ="", action) => {
+export const subTitle = (state = "", action) => {
     switch (action.type) {
         case constants.SET_NAV_SUBTITLE:
             return action.subtitle
@@ -73,6 +74,6 @@ export const subTitle = (state ="", action) => {
     }
 }
 
-const rootReducer = combineReducers({ schoolsByStatus, selectedStatus, currentUser,subTitle })
+const rootReducer = combineReducers({ schoolsByStatus, selectedStatus, currentUser, subTitle, loadingBar: loadingBarReducer })
 
 export default rootReducer

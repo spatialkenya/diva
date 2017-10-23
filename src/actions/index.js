@@ -1,6 +1,9 @@
 import { URL, LOGIN } from '../config/Api'
 import constants from '../constants'
 import axios from 'axios'
+import { showLoading, hideLoading } from 'react-redux-loading-bar'
+
+
 export const selectStatus = status => ({ type: constants.SELECT_STATUS, status })
 export const setNavSubtitle = subtitle => ({ type: constants.SET_NAV_SUBTITLE, subtitle })
 
@@ -36,6 +39,7 @@ export const login = (username, password) => dispatch => {
 
 
 const fetchSchools = status => dispatch => {
+    dispatch(showLoading())
     dispatch(requestSchools(status))
     let status_logic;
     if (status === 'All') {
@@ -48,6 +52,7 @@ const fetchSchools = status => dispatch => {
     return fetch(`https://erick-otenyo.carto.com/api/v2/sql?q=SELECT * from digischool where present_devices${status_logic}&format=geojson`)
         .then(response => response.json())
         .then(json => {
+            dispatch(hideLoading())            
             dispatch(receiveSchools(status, json));
         })
 }

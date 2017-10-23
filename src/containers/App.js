@@ -15,7 +15,7 @@ import LoginContainer from '../components/login'
 import MappComponent from './Mapp'
 import SchoolDetailPage from '../components/detail/school'
 import CountyDetailPage from '../components/detail/county'
-
+import LoadingBar from 'react-redux-loading-bar'
 
 const getUserName = user => {
   if (user.profile) {
@@ -33,8 +33,11 @@ const CountyDetail = userIsAuthenticatedRedir(CountyDetailPage)
 function App({ user, subtitle, logout }) {
   return (
     <Router>
-      <div className="wrapper">
-        <Navbar subtitle={subtitle} user={getUserName(user)} logout={logout} />
+      <div>
+        <header>
+          <LoadingBar style={{ backgroundColor: 'rgb(0, 188, 212)', height: '5px', zIndex: 1 }} />
+          <Navbar subtitle={subtitle} user={getUserName(user)} logout={logout} />
+        </header>
         <div className="content">
           <Switch>
             <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home} />

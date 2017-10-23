@@ -27,8 +27,6 @@ class CountyDetailPage extends React.Component {
         }
     }
     loadData() {
-        const { token } = this.props
-        axios.defaults.headers.common['Authorization'] = "Token " + token;
         axios.get(`/counties/${this.props.match.params.countyId}`).then(county => {
             this.setState({ county: county.data })
         })
