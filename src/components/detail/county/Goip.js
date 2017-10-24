@@ -5,10 +5,6 @@ import 'jquery-ui-bundle';
 import 'pivottable/dist/pivot.min.js';
 import 'pivottable/dist/gchart_renderers.min.js';
 
-import { GoogleCharts } from 'google-charts';
-
-GoogleCharts.load("corechart", "charteditor");
-
 const renderers = $.extend($.pivotUtilities.renderers, $.pivotUtilities.gchart_renderers);
 
 
