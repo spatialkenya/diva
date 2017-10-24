@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import $ from 'jquery';
-import pivottable from 'pivottable';
+import 'jquery-ui-bundle';
+import 'pivottable';
 
 class GOIP extends React.Component {
   constructor(props) {
@@ -23,7 +24,6 @@ class GOIP extends React.Component {
     fetch(`https://digischool.mybluemix.net/api/v1/issues/?school__county=${this.props.county_id}`).then(response => {
       if (response.ok) {
         response.json().then(issues => {
-          console.log(issues);
           this.setState({ issues: issues });
         });
       } else {

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import { JaneLayer, Source, MapLayer,Legend } from 'jane-maps';
+import { JaneLayer, Source, MapLayer } from 'jane-maps';
 import mapboxgl from 'mapbox-gl';
 
 import SideBar from './SideBar';

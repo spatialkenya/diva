@@ -30,12 +30,12 @@ const SchoolDetail = userIsAuthenticatedRedir(SchoolDetailPage)
 const CountyDetail = userIsAuthenticatedRedir(CountyDetailPage)
 
 
-function App({ user, subtitle, logout }) {
+const App = ({ user, subtitle, logout }) => {
   return (
     <Router>
       <div>
         <header>
-          <LoadingBar style={{ backgroundColor: 'rgb(0, 188, 212)', height: '5px', zIndex: 1 }} />
+          <LoadingBar style={{ backgroundColor: 'rgb(0, 188, 212)', zIndex: 1 }} />
           <Navbar subtitle={subtitle} user={getUserName(user)} logout={logout} />
         </header>
         <div className="content">
