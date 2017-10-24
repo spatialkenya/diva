@@ -1,4 +1,9 @@
   
+  .pvtUi {
+    display: block;
+    width: 100%;
+    overflow: auto;
+}
   .detail-page .back-button {
     color: rgba(0, 0, 0, 0.87);
     background-color: rgb(255, 255, 255);

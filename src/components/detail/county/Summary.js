@@ -7,26 +7,28 @@ const Summary = ({ county }) => (
             <div className="box-wrapper-2">
                 <div className="box-wrapper-3">
                     <div className="box-head-wrapper">
-                        <span className="box-head">County Details</span>
+                        <span className="box-head">County Summary:</span>
                     </div>
                 </div >
                 <div className="panels-wrapper">
                     <div className="row equal">
                         <div className="col-md-6">
                             <div className="panel panel-default">
-                                <div className="panel-heading">Schools Summary</div>
+                                <div className="panel-heading">Total Number of schools:</div>
                                 <div className="panel-body">
-                                    <h5>
-                                        Total Number of Schools: {county.schools}
-                                    </h5>
+                                    <h3 style={{ textAlign: 'center' }}>
+                                    <i className="fa fa-university" aria-hidden="true"></i> {county.schools}
+                                    </h3>
                                 </div>
                             </div>
                         </div>
                         <div className="col-md-6">
                             <div className="panel panel-default">
-                                <div className="panel-heading">Total number of Devices </div>
+                                <div className="panel-heading">Total Number of Devices Delivered: </div>
                                 <div className="panel-body">
-                                    <h5>No of devices here</h5>
+                                    <h3 style={{ textAlign: 'center' }}>
+                                        <i className="fa fa-laptop" aria-hidden="true"></i> {county.devices}
+                                    </h3>
                                 </div>
                             </div>
                         </div>
@@ -38,7 +40,7 @@ const Summary = ({ county }) => (
 );
 
 Summary.propTypes = {
-    county:PropTypes.object.isRequired
+    county: PropTypes.object.isRequired
 }
 
 export default Summary;

@@ -19,7 +19,6 @@ class MappComponent extends Component {
   static propTypes = {
     selectedStatus: PropTypes.string.isRequired,
     schools: PropTypes.object.isRequired,
-    isFetching: PropTypes.bool.isRequired,
     dispatch: PropTypes.func.isRequired
   }
 
@@ -42,7 +41,7 @@ class MappComponent extends Component {
   }
 
   render() {
-    const { selectedStatus, schools, isFetching } = this.props
+    const { selectedStatus, schools } = this.props
     // const isEmpty = schools.length === 0
     return (
       <div>
@@ -74,12 +73,11 @@ class MappComponent extends Component {
 
 const mapStateToProps = state => {
   const { selectedStatus, schoolsByStatus } = state
-  const { isFetching, items: schools } = schoolsByStatus[selectedStatus] || {
-    isFetching: true,
+  const { items: schools } = schoolsByStatus[selectedStatus] || {
     items: {}
   }
 
-  return { selectedStatus, schools, isFetching }
+  return { selectedStatus, schools }
 }
 
 export default connect(mapStateToProps)(MappComponent)

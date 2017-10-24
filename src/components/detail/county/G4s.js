@@ -25,7 +25,7 @@ export const G4S = () => (
               <div className="panel-body">
                 <div>
                   <div>
-                    <p>Analysis Table here</p>
+                    <p>G4S Information</p>
                   </div>
                 </div>
               </div>

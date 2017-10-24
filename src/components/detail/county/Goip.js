@@ -2,7 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import $ from 'jquery';
 import 'jquery-ui-bundle';
-import 'pivottable';
+import 'pivottable/dist/pivot.min.js';
+import 'pivottable/dist/gchart_renderers.min.js';
+
+import { GoogleCharts } from 'google-charts';
+
+GoogleCharts.load("corechart", "charteditor");
+
+const renderers = $.extend($.pivotUtilities.renderers, $.pivotUtilities.gchart_renderers);
+
 
 class GOIP extends React.Component {
   constructor(props) {
@@ -45,11 +53,13 @@ class GOIP extends React.Component {
     if (this.state.issues) {
       $("#output").pivotUI(
         this.state.issues, {
+          renderers: renderers,
           derivedAttributes: {
             "Year": $.pivotUtilities.derivers.dateFormat("date", "%y")
           },
           rows: ["error_code"],
-          cols: ["Year"]
+          cols: ["Year"],
+          rendererName: "Bar Chart"
         });
     }
 

@@ -14,14 +14,16 @@ const CountyDetail = ({ county }) => (
     <Heading county={county.properties} />
     <div className="col-md-6">
       <Summary county={county.properties} />
-      <GOIP county_id={county.id} />
       <G4S county_id={county.id} />
       <TPL county_id={county.id} />
     </div>
     <div className="col-md-6">
       <CountyMap county={county} />
       <WEEE county_id={county.id} />
-      <COM21 county_id={county.id} />
+    </div>
+    <div style={{margin:'30px'}}>
+    <GOIP county_id={county.id} />
+    <COM21 county_id={county.id} />
     </div>
   </div>
 )

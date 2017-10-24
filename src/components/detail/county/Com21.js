@@ -25,7 +25,7 @@ export const COM21 = () => (
               <div className="panel-body">
                 <div>
                   <div>
-                    <p>Analysis Table here</p>
+                    <p>COM21 Information</p>
                   </div>
                 </div>
               </div>
