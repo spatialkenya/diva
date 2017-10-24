@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { selectStatus, fetchSchoolsIfNeeded } from '../actions'
+import { selectStatus, fetchSchoolsIfNeeded, setNavSubtitle } from '../actions'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { Jane, Legend } from 'jane-maps';
@@ -24,7 +24,9 @@ class MappComponent extends Component {
 
   componentDidMount() {
     const { dispatch, selectedStatus } = this.props
+    dispatch(setNavSubtitle('Map'))
     dispatch(fetchSchoolsIfNeeded(selectedStatus))
+
   }
 
   componentWillReceiveProps(nextProps) {

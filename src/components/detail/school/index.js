@@ -14,7 +14,7 @@ class SchoolDetailPage extends React.Component {
     }
     componentDidMount() {
         const { dispatch } = this.props
-        dispatch(setNavSubtitle("School Detail"))
+        dispatch(setNavSubtitle("School Details"))
         this.loadData();
     }
     componentDidUpdate(prevProps) {

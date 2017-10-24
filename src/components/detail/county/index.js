@@ -18,7 +18,7 @@ class CountyDetailPage extends React.Component {
     }
     componentDidMount() {
         const { dispatch } = this.props
-        dispatch(setNavSubtitle("County Detail"))
+        dispatch(setNavSubtitle("County Details"))
         this.loadData();
     }
     componentDidUpdate(prevProps) {
