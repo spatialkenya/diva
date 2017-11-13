@@ -51,10 +51,10 @@ class GOIP extends React.Component {
         this.state.issues, {
           renderers: renderers,
           derivedAttributes: {
-            "Year": $.pivotUtilities.derivers.dateFormat("date", "%y")
+            "Month": $.pivotUtilities.derivers.dateFormat("date", "%m")
           },
           rows: ["error_code"],
-          cols: ["Year"],
+          cols: ["Month"],
           rendererName: "Bar Chart"
         });
     }

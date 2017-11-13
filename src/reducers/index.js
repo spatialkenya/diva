@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 import { loadingBarReducer } from 'react-redux-loading-bar'
 import constants from '../constants'
+
 const selectedStatus = (state = 'All', action) => {
     switch (action.type) {
         case constants.SELECT_STATUS:
