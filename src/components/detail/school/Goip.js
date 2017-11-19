@@ -24,7 +24,6 @@ class GOIP extends React.Component {
     fetch(`https://digischool.mybluemix.net/api/v1/issues/?school=${this.props.school_id}`).then(response => {
       if (response.ok) {
         response.json().then(issues => {
-          console.log(issues);
           this.setState({ issues: issues });
         });
       } else {

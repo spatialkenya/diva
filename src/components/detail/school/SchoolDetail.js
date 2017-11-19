@@ -14,7 +14,7 @@ const SchoolDetail = ({ school }) => (
     <Heading school={school.properties} />
     <div className="col-md-6">
       <Summary school={school} />
-      <GOIP school={school.properties.id} />
+      <GOIP school_id={school.properties.id} />
       <G4S school={school.properties.id} />
       <TPL school={school.properties.id} />
     </div>
