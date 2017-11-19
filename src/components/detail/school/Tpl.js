@@ -26,7 +26,7 @@ export const TPL = () => (
               <div className="panel-body">
                 <div>
                   <div>
-                    <p>Analysis Table here</p>
+                    <p>TPL Analysis</p>
                   </div>
                 </div>
               </div>

@@ -25,7 +25,7 @@ export const WEEE = () => (
               <div className="panel-body">
                 <div>
                   <div>
-                    <p>Analysis Table here</p>
+                    <p>WEEE Analysis</p>
                   </div>
                 </div>
               </div>
