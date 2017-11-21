@@ -22,7 +22,6 @@ class ProjectDetailPage extends React.Component {
     }
     loadData() {
         axios.get('/analysis/').then(summary => {
-            console.log(summary)
             this.setState({ summary: summary.data })
         })
     }
