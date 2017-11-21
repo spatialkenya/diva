@@ -79,6 +79,14 @@ class Home extends Component {
                       <Select.Async name="form-field-name" simpleValue placeholder="Search County" valueKey="county_id" labelKey="county" loadOptions={this.getCounties} onChange={this.onCountySelectChange} />
                     </div>
                   </div>
+                  <div className="splash-button-section">
+                    <hr className="light" />
+                    <div className="box preset-link ">
+                      <Link className="btn btn-default" to={`${process.env.PUBLIC_URL}/analysis`}>
+                      Project Summary & Analysis
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

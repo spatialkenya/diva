@@ -34,6 +34,9 @@ export default class Navbar extends React.Component {
               <NavLink className="nav-item" activeClassName="active" exact to={`${process.env.PUBLIC_URL}/`}>Home</NavLink>
             </li>
             <li>
+              <NavLink className="nav-item" activeClassName="active"  to={`${process.env.PUBLIC_URL}/analysis`}>Analysis</NavLink>
+            </li>
+            <li>
               <NavLink className="nav-item" activeClassName="active" to={`${process.env.PUBLIC_URL}/about`}>About</NavLink>
             </li>
             <LoginLink />
