@@ -15,6 +15,7 @@ import LoginContainer from '../components/login'
 import MappComponent from './Mapp'
 import SchoolDetailPage from '../components/detail/school'
 import CountyDetailPage from '../components/detail/county'
+import ProjectDetailPage from '../components/detail/project'
 import LoadingBar from 'react-redux-loading-bar'
 
 const getUserName = user => {
@@ -28,6 +29,7 @@ const Login = userIsNotAuthenticatedRedir(LoginContainer)
 // const Mapp = userIsAuthenticatedRedir(MappComponent)
 const SchoolDetail = userIsAuthenticatedRedir(SchoolDetailPage)
 const CountyDetail = userIsAuthenticatedRedir(CountyDetailPage)
+const ProjectDetail = userIsAuthenticatedRedir(ProjectDetailPage)
 
 
 const App = ({ user, subtitle, logout }) => {
@@ -46,6 +48,7 @@ const App = ({ user, subtitle, logout }) => {
             <Route path={`${process.env.PUBLIC_URL}/about`} component={About} />
             <Route path={`${process.env.PUBLIC_URL}/schools/:schoolId`} component={SchoolDetail} />
             <Route path={`${process.env.PUBLIC_URL}/county/:countyId`} component={CountyDetail} />
+            <Route path={`${process.env.PUBLIC_URL}/analysis`} component={ProjectDetail} />
             <Route component={NotFound} />
           </Switch>
         </div>
