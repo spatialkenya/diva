@@ -87,6 +87,8 @@ class Home extends Component {
                       </Link>
                     </div>
                   </div>
+                  <p className="copyright">JKUAT © 2017. All rights reserved.</p>
+
                 </div>
               </div>
             </div>

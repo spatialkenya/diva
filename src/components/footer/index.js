@@ -29,7 +29,7 @@ const Footer = () => (
   
               <img className="logo" src="https://s3-eu-west-1.amazonaws.com/myspatialdata/digischool-logo2.png" alt="DiVA"/>
   
-              <p className="copyright">Copyright © DiVA Project. All rights reserved.</p>
+              <p className="copyright">JKUAT © 2017. All rights reserved.</p>
             </a>
           </div>
         </div>
